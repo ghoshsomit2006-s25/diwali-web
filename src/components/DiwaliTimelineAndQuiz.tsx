@@ -333,3 +333,7 @@ export const DiwaliTimelineAndQuiz: React.FC = () => {
     </div>
   );
 };
+
+
+
+//this is the timeline and quiz component for the diwali web app. It displays the five sacred days of diwali and allows users to take a quiz about diwali traditions and legends. The component uses React, motion for animations, and lucide-react for icons. It also plays festive audio effects when users interact with the quiz.
