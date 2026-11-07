@@ -1,0 +1,6 @@
+{
+  "name": "Diwali Digital Diya",
+  "description": "An interactive, personalised Diwali greeting website with flickering diyas, fireworks, procedural rangoli, festive ragas, and custom wishes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

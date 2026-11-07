@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with Diwali celebration stats and settings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "Display name of user" },
+        "email": { "type": "string", "description": "Email address" },
+        "photoURL": { "type": "string", "description": "Avatar photo URL" },
+        "totalDiyasLit": { "type": "number", "description": "Total number of diyas lit by user" },
+        "createdAt": { "type": "string", "description": "Account creation timestamp" },
+        "updatedAt": { "type": "string", "description": "Last updated timestamp" }
+      },
+      "required": ["userId", "displayName"]
+    },
+    "GreetingCard": {
+      "title": "GreetingCard",
+      "description": "User created personalized Diwali greeting card",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique card identifier" },
+        "userId": { "type": "string", "description": "Author UID" },
+        "receiverName": { "type": "string", "description": "Recipient name" },
+        "senderName": { "type": "string", "description": "Sender name" },
+        "message": { "type": "string", "description": "Festive blessing or wish text" },
+        "tone": { "type": "string", "description": "Greeting tone style" },
+        "language": { "type": "string", "description": "Greeting language" },
+        "theme": { "type": "string", "description": "Visual theme identifier" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["id", "userId", "receiverName", "message"]
+    },
+    "PublicWish": {
+      "title": "PublicWish",
+      "description": "A floating prayer or wish published to the Diwali Wish Wall",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique wish identifier" },
+        "name": { "type": "string", "description": "Author name" },
+        "wish": { "type": "string", "description": "Wish message text" },
+        "location": { "type": "string", "description": "City or country" },
+        "color": { "type": "string", "description": "Lantern hex color code" },
+        "authorUid": { "type": "string", "description": "Author UID or anonymous" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["id", "name", "wish"]
+    },
+    "SavedRangoli": {
+      "title": "SavedRangoli",
+      "description": "User created procedural or hand-drawn symmetrical rangoli pattern",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique rangoli identifier" },
+        "userId": { "type": "string", "description": "Author UID" },
+        "dataUrl": { "type": "string", "description": "Base64 PNG image data" },
+        "symmetry": { "type": "number", "description": "8 or 12 fold symmetry" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      },
+      "required": ["id", "userId", "dataUrl"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User account document containing profile information"
+    },
+    "/users/{userId}/greetings/{greetingId}": {
+      "schema": "GreetingCard",
+      "description": "Subcollection of personalized Diwali greeting cards created by user"
+    },
+    "/users/{userId}/rangolis/{rangoliId}": {
+      "schema": "SavedRangoli",
+      "description": "Subcollection of saved rangoli designs created by user"
+    },
+    "/wishes/{wishId}": {
+      "schema": "PublicWish",
+      "description": "Public community collection of floating sky lantern wishes"
+    }
+  }
+}

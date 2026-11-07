@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-decorative: "Cinzel Decorative", "Playfair Display", Georgia, serif;
+  --font-hindi: "Tiro Devanagari Hindi", serif;
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+
+  --color-marigold: #ff9933;
+  --color-saffron: #ff7700;
+  --color-gold: #ffd700;
+  --color-gold-glow: #ffe57f;
+  --color-midnight: #080214;
+  --color-deep-indigo: #0f0524;
+  --color-royal-purple: #23083d;
+  --color-diya-glow: rgba(255, 170, 0, 0.45);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #080214;
+    color: #fef3c7;
+    overflow-x: hidden;
+  }
+}
+
+/* Diya flame flickering realism */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) translate(0, 0) rotate(0deg);
+    filter: drop-shadow(0 0 12px rgba(255, 170, 0, 0.9)) drop-shadow(0 -8px 24px rgba(255, 80, 0, 0.7));
+  }
+  20% {
+    transform: scale(1.04, 0.96) translate(-1px, -2px) rotate(-1.5deg);
+    filter: drop-shadow(0 0 16px rgba(255, 190, 20, 1)) drop-shadow(0 -10px 28px rgba(255, 100, 0, 0.8));
+  }
+  40% {
+    transform: scale(0.97, 1.05) translate(1px, 1px) rotate(1deg);
+    filter: drop-shadow(0 0 10px rgba(255, 150, 0, 0.85)) drop-shadow(0 -7px 20px rgba(255, 60, 0, 0.65));
+  }
+  60% {
+    transform: scale(1.02, 0.98) translate(-1.5px, 0px) rotate(-1deg);
+    filter: drop-shadow(0 0 14px rgba(255, 180, 10, 0.95)) drop-shadow(0 -9px 26px rgba(255, 90, 0, 0.75));
+  }
+  80% {
+    transform: scale(0.98, 1.02) translate(1px, -1px) rotate(1.5deg);
+    filter: drop-shadow(0 0 13px rgba(255, 160, 0, 0.9)) drop-shadow(0 -8px 22px rgba(255, 70, 0, 0.7));
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 1.6s infinite ease-in-out;
+  transform-origin: center bottom;
+}
+
+/* Subtle hanging lantern sway */
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-3.5deg);
+  }
+  50% {
+    transform: rotate(3.5deg);
+  }
+}
+
+.animate-sway-slow {
+  animation: sway 5s infinite ease-in-out;
+  transform-origin: top center;
+}
+
+.animate-sway-fast {
+  animation: sway 3.8s infinite ease-in-out;
+  transform-origin: top center;
+}
+
+/* Golden shimmer text */
+@keyframes shimmerGold {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    #ffd700 0%,
+    #fff3a8 25%,
+    #ff9933 50%,
+    #fff3a8 75%,
+    #ffd700 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerGold 6s linear infinite;
+}
+
+/* Ambient glow pulses */
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+.animate-ambient-pulse {
+  animation: ambientPulse 4s infinite ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080214;
+}
+::-webkit-scrollbar-thumb {
+  background: #3c1a63;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff9933;
+}
